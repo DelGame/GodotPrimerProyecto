@@ -189,7 +189,7 @@ radius = 26.0
 height = 54.0
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(529, 301)
+position = Vector2(1012, 299)
 motion_mode = 1
 script = ExtResource("1_sv6q7")
 
