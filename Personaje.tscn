@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://digbnwp66irfh"]
+[gd_scene load_steps=16 format=3 uid="uid://2xya6l207dg0"]
 
 [ext_resource type="Texture2D" uid="uid://bu5b0mxph4tsn" path="res://Tiny Swords/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_topw4"]
 [ext_resource type="Script" path="res://Personaje.cs" id="2_fy87v"]
