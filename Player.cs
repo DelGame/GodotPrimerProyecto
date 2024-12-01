@@ -7,14 +7,17 @@ public partial class Player : CharacterBody2D
 	AnimationPlayer animacion;
 	Node2D palo;
 
+	int tipoAnimacion;
+
 	bool fCorrer, fIdle, fAtaque;
 
 	public override void _Ready()
 	{
-	
+
 		animacion = this.GetNode<AnimationPlayer>("Animacion");
 		palo = this.GetNode<Node2D>("HandEquip");
 		animacion.Play("Idle");
+
 
 	}
 
@@ -28,29 +31,55 @@ public partial class Player : CharacterBody2D
 		//Movimiento
 		Vector2 direction = Input.GetVector("left", "right", "up", "down").Normalized();
 
-		if (direction != Vector2.Zero)
+
+
+		//golpe
+		if (Input.IsActionJustPressed("golpe"))
 		{
-			velocity = direction * speed;
-			palo.Visible = false;
-			fCorrer = true;
+			tipoAnimacion = 2;
+			fAtaque = true;
+			palo.Visible = true;
 		}
 		else
 		{
-			fIdle = true;
-			palo.Visible = false;
-			velocity = Vector2.Zero;
+			if (direction != Vector2.Zero && animacion.CurrentAnimation != "Swing")
+			{
+
+				velocity = direction * speed;
+				tipoAnimacion = 1;
+				palo.Visible = false;
+
+
+			}
+			else
+			{
+				velocity = Vector2.Zero;
+				if (!animacion.IsPlaying())
+				{
+					tipoAnimacion = 0;
+					palo.Visible = false;
+
+				}
+			}
+		}
+
+		switch (tipoAnimacion)
+		{
+			case 1:
+				animacion.Play("Correr");
+				break;
+			case 2:
+				animacion.Play("Swing");
+				break;
+			default:
+				animacion.Play("Idle");
+				break;
 		}
 
 		Velocity = velocity;
 		MoveAndSlide();
 
 
-		//golpe
-		if (Input.IsActionJustPressed("golpe"))
-		{
-			fAtaque = true;
-			palo.Visible = true;
-		}
 
 	}
 }
@@ -77,4 +106,3 @@ public partial class Player : CharacterBody2D
 // fAtaque = false;
 // fCorrer = false;
 // fIdle = false;
-
