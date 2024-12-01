@@ -3,7 +3,7 @@ using System;
 
 public partial class Personaje : AnimatedSprite2D
 {
-	public float velocidad = 1.0f;
+	public float velocidad = 3.0f;
 	public override void _Ready()
 	{
 	}
