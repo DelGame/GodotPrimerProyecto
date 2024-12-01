@@ -227,7 +227,7 @@ script = ExtResource("1_sv6q7")
 texture = ExtResource("1_th8nt")
 hframes = 6
 vframes = 8
-frame = 17
+frame = 6
 
 [node name="Animacion" type="AnimationPlayer" parent="."]
 libraries = {
@@ -236,7 +236,6 @@ libraries = {
 
 [node name="HandEquip" type="Node2D" parent="."]
 position = Vector2(1, 11)
-scale = Vector2(-1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="HandEquip"]
 position = Vector2(67, -16)

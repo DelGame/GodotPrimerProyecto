@@ -9,8 +9,6 @@ public partial class Player : CharacterBody2D
 
 	int tipoAnimacion;
 
-	bool fCorrer, fIdle, fAtaque;
-
 	public override void _Ready()
 	{
 
@@ -31,28 +29,29 @@ public partial class Player : CharacterBody2D
 
 		//Movimiento
 		Vector2 direction = Input.GetVector("left", "right", "up", "down").Normalized();
-		if (direction.X > 0){
-			this.GetNode<Sprite2D>("Body").FlipH = false;
-			this.GetNode<Node2D>("HandEquip").Scale = new Vector2(1,1);
-		}	
-		if (direction.X < 0){
-			this.GetNode<Sprite2D>("Body").FlipH = true;
-			this.GetNode<Node2D>("HandEquip").Scale = new Vector2(-1,1);
-		}
-			
+
+
 
 		//golpe
 		if (Input.IsActionJustPressed("golpe"))
 		{
 			tipoAnimacion = 2;
-			fAtaque = true;
 			palo.Visible = true;
 		}
 		else
 		{
 			if (direction != Vector2.Zero && animacion.CurrentAnimation != "Swing")
 			{
-
+				if (direction.X > 0)
+				{
+					this.GetNode<Sprite2D>("Body").FlipH = false;
+					this.GetNode<Node2D>("HandEquip").Scale = new Vector2(1, 1);
+				}
+				if (direction.X < 0)
+				{
+					this.GetNode<Sprite2D>("Body").FlipH = true;
+					this.GetNode<Node2D>("HandEquip").Scale = new Vector2(-1, 1);
+				}
 				velocity = direction * speed;
 				tipoAnimacion = 1;
 				palo.Visible = false;
@@ -62,10 +61,14 @@ public partial class Player : CharacterBody2D
 			else
 			{
 				velocity = Vector2.Zero;
-				if (!animacion.IsPlaying())
+				if (animacion.CurrentAnimation != "Swing")
 				{
+
 					tipoAnimacion = 0;
 					palo.Visible = false;
+					if (animacion.CurrentAnimation == "Correr"){
+						animacion.Stop();
+					}
 
 				}
 			}
