@@ -17,6 +17,7 @@ public partial class Player : CharacterBody2D
 		animacion = this.GetNode<AnimationPlayer>("Animacion");
 		palo = this.GetNode<Node2D>("HandEquip");
 		animacion.Play("Idle");
+		palo.Visible = false;
 
 
 	}
@@ -30,8 +31,15 @@ public partial class Player : CharacterBody2D
 
 		//Movimiento
 		Vector2 direction = Input.GetVector("left", "right", "up", "down").Normalized();
-
-
+		if (direction.X > 0){
+			this.GetNode<Sprite2D>("Body").FlipH = false;
+			this.GetNode<Node2D>("HandEquip").Scale = new Vector2(1,1);
+		}	
+		if (direction.X < 0){
+			this.GetNode<Sprite2D>("Body").FlipH = true;
+			this.GetNode<Node2D>("HandEquip").Scale = new Vector2(-1,1);
+		}
+			
 
 		//golpe
 		if (Input.IsActionJustPressed("golpe"))

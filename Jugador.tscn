@@ -185,10 +185,10 @@ tracks/3/path = NodePath("HandEquip/Sprite2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.60001),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(20, -59), Vector2(20, -61), Vector2(19, -58), Vector2(92, 4), Vector2(91, 8), Vector2(64, -17), Vector2(68, -20)]
+"values": [Vector2(0, -56), Vector2(-3, -58), Vector2(-3, -58), Vector2(70, 6), Vector2(71, 11), Vector2(45, -18), Vector2(49, -18)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -200,7 +200,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.60001),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [-1.19534, -1.21927, -1.25051, 0.74562, 0.785172, -0.102803, -0.0471983]
+"values": [-1.19534, -1.23891, -1.25051, 0.74562, 0.785172, -0.102803, -0.0471983]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tvo40"]
@@ -227,7 +227,7 @@ script = ExtResource("1_sv6q7")
 texture = ExtResource("1_th8nt")
 hframes = 6
 vframes = 8
-frame = 6
+frame = 17
 
 [node name="Animacion" type="AnimationPlayer" parent="."]
 libraries = {
@@ -235,7 +235,8 @@ libraries = {
 }
 
 [node name="HandEquip" type="Node2D" parent="."]
-position = Vector2(-19, 5)
+position = Vector2(1, 11)
+scale = Vector2(-1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="HandEquip"]
 position = Vector2(67, -16)
